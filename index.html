@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Reportería Financiera - Liceo Particular Avenida Recoleta</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        elarBlue: '#1a234d',
+                        elarBlueDark: '#0e1630',
+                        elarRed: '#d32f2f',
+                        elarRedHover: '#c62828',
+                        elarGold: '#fbc02d',
+                        elarGoldLight: '#fef9e7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .elar-gradient-header {
+            background: linear-gradient(135deg, #1a234d 0%, #0e1630 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgba(26, 35, 77, 0.15), 0 4px 6px -2px rgba(26, 35, 77, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 bg-slate-50">
+
+    <!-- Encabezado Principal / Header -->
+    <header class="elar-gradient-header text-white border-b-4 border-elarGold shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Logos e Identidad Institucional -->
+                <div class="flex items-center gap-5 text-center md:text-left">
+                    <div class="bg-white p-2 rounded-xl shadow-md flex-shrink-0 border-2 border-elarGold flex items-center justify-center">
+                        <!-- Insignia Oficial ELAR -->
+                        <img src="Logo.png" alt="Insignia Liceo Particular Avenida Recoleta ELAR" class="h-20 sm:h-24 w-auto object-contain drop-shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x120/1a234d/fbc02d?text=ELAR';">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Liceo Particular Avenida Recoleta</h1>
+                        <p class="text-elarGold font-semibold text-sm sm:text-base mt-0.5">ELAR &bull; RBD 10320</p>
+                        <p class="text-xs text-slate-300 mt-1">Educación Científico-Humanista orientada a la excelencia académica y valores cristianos</p>
+                    </div>
+                </div>
+
+                <!-- Datos de contacto rápido -->
+                <div class="flex flex-col sm:flex-row md:flex-col gap-2 text-xs sm:text-sm text-slate-200 border-t md:border-t-0 md:border-l border-slate-700/80 pt-3 md:pt-0 md:pl-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-elarGold w-4 text-center"></i>
+                        <span>Av. Recoleta 3848, Recoleta (Metro Zapadores)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-elarGold w-4 text-center"></i>
+                        <span>(+56) 2 2461 6240</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-elarGold w-4 text-center"></i>
+                        <span>contacto@elar.cl</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Sección de Pertenencia Institucional -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 card-shadow border-l-8 border-elarRed">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-elarBlue font-semibold text-xs rounded-full uppercase tracking-wider">
+                        <i class="fa-solid fa-building-columns"></i> Portal Central de Accesos
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-elarBlue">Espacio de Gestor de Reportería Financiera</h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-4xl">
+                        Plataforma principal alojadora de accesos e informes del Liceo Particular Avenida Recoleta. Seleccione los módulos de reportes a continuación para visualizar o configurar sus accesos directos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Valores Institucionales ELAR -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-100">
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <span class="text-2xl">🛡️</span>
+                    <div>
+                        <div class="font-bold text-xs text-slate-800">Respeto</div>
+                        <div class="text-[11px] text-slate-500">Sello Valórico</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <span class="text-2xl">⚖️</span>
+                    <div>
+                        <div class="font-bold text-xs text-slate-800">Responsabilidad</div>
+                        <div class="text-[11px] text-slate-500">Gestión Transparente</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <span class="text-2xl">🎖️</span>
+                    <div>
+                        <div class="font-bold text-xs text-slate-800">Perseverancia</div>
+                        <div class="text-[11px] text-slate-500">Superación Continua</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <span class="text-2xl">🤝</span>
+                    <div>
+                        <div class="font-bold text-xs text-slate-800">Compromiso</div>
+                        <div class="text-[11px] text-slate-500">Comunidad Educativa</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menú de Opciones / Botones de Reportería -->
+        <section class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold text-elarBlue flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-elarRed"></i>
+                        Menú de Opciones
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-500">Haga clic sobre cualquier módulo para ingresar al reporte respectivo.</p>
+                </div>
+                <span class="text-xs bg-slate-200 text-slate-700 font-semibold px-3 py-1 rounded-full w-fit">
+                    6 Accesos Disponibles
+                </span>
+            </div>
+
+            <!-- Grid de Botones de Reportería -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- 1. Reportería General de Ingresos (Vinculado a ingresos.html) -->
+                <a href="ingresos.html" 
+                   class="group relative text-left bg-white p-5 rounded-2xl border-2 border-emerald-500/50 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between bg-emerald-950/5">
+                    <div class="flex items-start justify-between w-full mb-3">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            💵
+                        </div>
+                        <span class="text-xs font-bold text-emerald-600 group-hover:text-emerald-700 transition-colors flex items-center gap-1">
+                            Ver Reporte <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-emerald-700 text-base transition-colors">
+                            Reportería Total de Ingresos
+                        </h4>
+                        <p class="text-xs text-slate-500 mt-1">Consolidado de Ingresos de Todas las Subvenciones con Detalle Mensual.</p>
+                    </div>
+                </a>
+
+                <!-- 2. Reportería general de egresos -->
+
+                <a href="Gastos.Html" 
+               class="group relative text-left bg-white p-5 rounded-2xl border-2 border-rose-500/50 hover:border-rose-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between bg-rose-950/5">
+                <div class="flex items-start justify-between w-full mb-3">
+                    <div class="w-12 h-12 rounded-xl bg-rose-100 text-2xl flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                        📉
+                    </div>
+                    <span class="text-xs font-bold text-rose-600 group-hover:text-rose-700 transition-colors flex items-center gap-1">
+                        Ver Reporte <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-rose-700 text-base transition-colors">
+                        Reportería Total de Gastos
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-1">Control de Gastos en Remuneraciones y Gastos de Operación con Detalle Mensual.</p>
+                </div>
+            </a>
+
+                <!-- 3. Reportería de Egresos por subvenciones -->
+                 <a href="rep_por_subvenciones.Html" 
+               class="group relative text-left bg-white p-5 rounded-2xl border-2 border-blue-500/50 hover:border-rose-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between bg-rose-950/5">
+                <div class="flex items-start justify-between w-full mb-3">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-2xl flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                        📑
+                    </div>
+                    <span class="text-xs font-bold text-rose-600 group-hover:text-rose-700 transition-colors flex items-center gap-1">
+                        Ver Reporte <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-rose-700 text-base transition-colors">
+                        Reportería Total G.O. por Subvenciones
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-1">Rendición de Gastos de Operación por tipo de subvención (General, SEP, Mantención, Pro-Retención | Periodo 2026.</p>
+                </div>
+            </a>
+                <!-- 4. Reportería Cierre de Remuneraciones (Vinculado a cierre_remu.html) -->
+                <a href="cierre_remu.html" 
+                   class="group relative text-left bg-white p-5 rounded-2xl border-2 border-purple-500/50 hover:border-purple-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between bg-purple-950/5">
+                    <div class="flex items-start justify-between w-full mb-3">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-2xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            👥
+                        </div>
+                        <span class="text-xs font-bold text-purple-600 group-hover:text-purple-700 transition-colors flex items-center gap-1">
+                            Ver Reporte <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-purple-700 text-base transition-colors">
+                            Reportería Cierre de Remuneraciones
+                        </h4>
+                        <p class="text-xs text-slate-500 mt-1">Cierre Remuneraciones con Detalle Mensual</p>
+                    </div>
+                </a>
+
+                <!-- 5. Reportería Honorarios -->
+
+                <a href="Honorarios.Html" 
+               class="group relative text-left bg-white p-5 rounded-2xl border-2 border-rose-500/50 hover:border-rose-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between bg-rose-950/5">
+                <div class="flex items-start justify-between w-full mb-3">
+                    <div class="w-12 h-12 rounded-xl bg-rose-100 text-2xl flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                        🛠️
+                    </div>
+                    <span class="text-xs font-bold text-rose-600 group-hover:text-rose-700 transition-colors flex items-center gap-1">
+                        Ver Reporte <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 group-hover:text-rose-700 text-base transition-colors">
+                        Reportería Total Gastos de Honorarios
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-1">Detalle Total, Servicios Contratados a Honorarios | Periodo 2026.</p>
+                </div>
+            </a>
+
+                <!-- 6. Vista avance de Presupuesto -->
+                <button onclick="openReportModal('Vista avance de Presupuesto', '📊', 'Tablero general de avance y porcentaje de ejecución del presupuesto institucional.')" 
+                        class="group relative text-left bg-white p-5 rounded-2xl border-2 border-elarGold hover:border-elarBlue transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                    <div class="flex items-start justify-between w-full mb-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-2xl flex items-center justify-center group-hover:bg-elarBlue transition-colors">
+                            📊
+                        </div>
+                        <span class="text-xs font-bold text-elarRed uppercase tracking-wider bg-red-50 px-2 py-1 rounded-full flex items-center gap-1">
+                            Monitoreo <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-elarBlue text-base transition-colors">
+                            Vista avance de Presupuesto
+                        </h4>
+                        <p class="text-xs text-slate-500 mt-1">Comparativa entre presupuesto asignado vs. ejecutado.</p>
+                    </div>
+                </button>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página / Footer -->
+    <footer class="bg-elarBlueDark text-white border-t-4 border-elarGold mt-12 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
+            
+            <!-- TARJETA PEQUEÑA DE AUTORÍA SOLICITADA -->
+            <div class="flex justify-center">
+                <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 sm:p-6 max-w-2xl w-full shadow-xl text-left relative overflow-hidden backdrop-blur-sm">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-elarGold"></div>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-elarBlue border-2 border-elarGold flex items-center justify-center text-2xl flex-shrink-0">
+                            👤
+                        </div>
+                        <div class="space-y-1 text-slate-200 text-xs sm:text-sm leading-relaxed">
+                            <p class="font-bold text-white text-sm sm:text-base flex items-center gap-1.5">
+                                👤 Sitio creado por Ricardo González Ortiz
+                            </p>
+                            <p class="text-slate-300">
+                                Encargado Departamento de Recursos Financieros
+                            </p>
+                            <p class="text-slate-300 flex items-center gap-1">
+                                🏫 Liceo Particular Avda Recoleta
+                            </p>
+                            <p class="text-elarGold font-medium flex items-center gap-1 pt-1">
+                                ✉️ E-Mail: <a href="mailto:finanzas@elar.cl" class="underline hover:text-white transition-colors">finanzas@elar.cl</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Institucional del Liceo -->
+            <div class="text-xs sm:text-sm text-slate-400 space-y-1">
+                <p class="font-semibold text-slate-200">Liceo Particular Avenida Recoleta (ELAR) &bull; RBD 10320</p>
+                <p>📍 Avenida Recoleta 3848, Recoleta, Santiago &bull; 📞 (+56) 2 2461 6240</p>
+            </div>
+
+            <div class="text-[11px] text-slate-500 pt-4 border-t border-slate-800">
+                Página Web Oficial: <a href="http://www.elar.cl" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-elarGold underline">www.elar.cl</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Interactivo para Configuración/Acceso de Enlaces -->
+    <div id="reportModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border-t-8 border-elarBlue transform transition-all scale-95 opacity-0 duration-200" id="modalContainer">
+            <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center gap-3">
+                    <div id="modalEmoji" class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl"></div>
+                    <div>
+                        <span class="text-[10px] font-bold text-elarRed uppercase tracking-wider">Módulo de Reportería</span>
+                        <h3 id="modalTitle" class="text-lg font-bold text-slate-800 leading-snug"></h3>
+                    </div>
+                </div>
+                <button onclick="closeReportModal()" class="text-slate-400 hover:text-slate-600 text-lg p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <p id="modalDescription" class="text-xs text-slate-600 mb-5 bg-slate-50 p-3 rounded-xl border border-slate-100"></p>
+
+            <div class="space-y-3">
+                <label class="block text-xs font-semibold text-slate-700">Enlace o URL asignada a esta página:</label>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="modalUrlInput" value="https://elar.cl/reportes/modulo.html" class="bg-slate-100 border border-slate-300 text-slate-700 text-xs rounded-lg block w-full p-2.5 font-mono select-all focus:outline-none focus:ring-2 focus:ring-elarBlue">
+                    <button onclick="copyModalUrl()" class="bg-elarBlue hover:bg-elarBlueDark text-white font-medium text-xs px-4 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors">
+                        <i class="fa-regular fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <p id="copyFeedback" class="text-[11px] text-emerald-600 font-medium hidden">
+                    <i class="fa-solid fa-check"></i> Enlace copiado al portapapeles
+                </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end gap-2">
+                <button onclick="closeReportModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
+                    Cerrar
+                </button>
+                <button onclick="navigateToUrl()" class="px-4 py-2 text-xs font-semibold text-white bg-elarRed hover:bg-elarRedHover rounded-lg transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Ir a la Página
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Control -->
+    <script>
+        function openReportModal(title, emoji, description) {
+            const modal = document.getElementById('reportModal');
+            const container = document.getElementById('modalContainer');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalEmoji = document.getElementById('modalEmoji');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalUrlInput = document.getElementById('modalUrlInput');
+            const copyFeedback = document.getElementById('copyFeedback');
+
+            modalTitle.innerText = title;
+            modalEmoji.innerText = emoji;
+            modalDescription.innerText = description;
+            
+            const slug = title.toLowerCase()
+                .trim()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9 -]/g, "")
+                .replace(/\s+/g, "-");
+
+            modalUrlInput.value = `https://elar.cl/reportes/${slug}.html`;
+
+            copyFeedback.classList.add('hidden');
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('reportModal');
+            const container = document.getElementById('modalContainer');
+
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        function copyModalUrl() {
+            const copyText = document.getElementById("modalUrlInput");
+            copyText.select();
+            document.execCommand("copy");
+
+            const copyFeedback = document.getElementById('copyFeedback');
+            copyFeedback.classList.remove('hidden');
+            setTimeout(() => {
+                copyFeedback.classList.add('hidden');
+            }, 2500);
+        }
+
+        function navigateToUrl() {
+            const url = document.getElementById("modalUrlInput").value;
+            window.open(url, '_blank');
+        }
+
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReportModal();
+            }
+        });
+    </script>
+</body>
+</html>

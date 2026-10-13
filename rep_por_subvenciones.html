@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Financiero por Subvenciones - Dashboard Interactivo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        general: { primary: '#059669', light: '#d1fae5', dark: '#065f46' },
+                        sep: { primary: '#2563eb', light: '#dbeafe', dark: '#1e40af' },
+                        mantenimiento: { primary: '#d97706', light: '#fef3c7', dark: '#b45309' },
+                        proretencion: { primary: '#db2777', light: '#fce7f3', dark: '#9d174d' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Header -->
+    <header id="header-bg" class="bg-slate-900 text-white shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold flex items-center gap-2">
+                    <i id="header-icon" class="fa-solid fa-chart-pie text-emerald-400"></i> Reporte Financiero Institucional
+                </h1>
+                <p class="text-slate-300 text-sm mt-1">Control y Análisis de Ejecución Presupuestaria por Subvención</p>
+            </div>
+            
+<div class="header-right">
+          <a href="index.html" class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-semibold text-xs px-4 py-2 rounded-lg border border-indigo-700 transition-colors shadow-sm" style="background:#312e81; color:#fff; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px;">
+            ⬅ Volver al Portal
+          </a>
+        </div>
+
+        <div class="mt-4 md:mt-0 text-right">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            ● Liceo Particular Avda Recoleta
+          </span>
+        </div>
+<div class="mt-4 md:mt-0 bg-slate-800/90 px-4 py-2 rounded-lg border border-slate-700 text-right shadow-inner">
+                <span class="text-xs text-slate-400 block">Presupuesto Global Acumulado</span>
+                <span id="global-total" class="text-xl font-bold text-white">$0</span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-8 overflow-x-auto">
+            <button onclick="switchTab('General')" id="btn-General" class="tab-btn py-4 px-3 font-semibold text-sm border-b-2 border-emerald-600 text-emerald-700 flex items-center gap-2 whitespace-nowrap transition-colors">
+                <i class="fa-solid fa-building-columns"></i> Subvención General
+            </button>
+            <button onclick="switchTab('SEP')" id="btn-SEP" class="tab-btn py-4 px-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 whitespace-nowrap transition-colors">
+                <i class="fa-solid fa-graduation-cap"></i> Subvención SEP
+            </button>
+            <button onclick="switchTab('Mantenimiento')" id="btn-Mantenimiento" class="tab-btn py-4 px-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 whitespace-nowrap transition-colors">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento
+            </button>
+            <button onclick="switchTab('Pro-Retencion')" id="btn-Pro-Retencion" class="tab-btn py-4 px-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 whitespace-nowrap transition-colors">
+                <i class="fa-solid fa-shield-heart"></i> Pro-Retención
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative overflow-hidden">
+                <div id="kpi-indicator-1" class="absolute top-0 left-0 w-1.5 h-full bg-emerald-600"></div>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Ejecutado Sección</span>
+                <h3 id="kpi-total" class="text-2xl font-bold text-slate-800 mt-2">$0</h3>
+                <span id="kpi-share" class="text-xs text-emerald-600 font-semibold mt-1 inline-block">-- % del total general</span>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative overflow-hidden">
+                <div id="kpi-indicator-2" class="absolute top-0 left-0 w-1.5 h-full bg-emerald-600"></div>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Partida Mayor Gasto</span>
+                <h3 id="kpi-top-partida" class="text-sm font-bold text-slate-800 mt-2 truncate" title="">--</h3>
+                <span id="kpi-top-monto" class="text-xs text-slate-500 mt-1 inline-block">$0</span>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative overflow-hidden">
+                <div id="kpi-indicator-3" class="absolute top-0 left-0 w-1.5 h-full bg-emerald-600"></div>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mes Mayor Ejecución</span>
+                <h3 id="kpi-top-mes" class="text-lg font-bold text-slate-800 mt-2">--</h3>
+                <span id="kpi-top-mes-monto" class="text-xs text-slate-500 mt-1 inline-block">$0</span>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-slate-600"></i> Ejecución Mensual
+                </h3>
+                <div class="relative h-72">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-bar text-slate-600"></i> Top Partidas Presupuestarias
+                </h3>
+                <div class="relative h-72">
+                    <canvas id="partidaChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Table Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-6 border-b border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-table text-slate-600"></i> Detalle de Gastos por Partida y Mes
+                </h3>
+                <input type="text" id="table-search" placeholder="Filtrar partida..." onkeyup="filterTable()" class="px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 w-full md:w-72">
+            </div>
+            <div class="overflow-x-auto">
+                <table id="detail-table" class="w-full text-left border-collapse text-sm">
+                    <thead id="table-head" class="bg-slate-100 text-slate-600 uppercase text-xs"></thead>
+                    <tbody id="table-body" class="divide-y divide-slate-200"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500">
+        Reporte Financiero Contable &bull; Diseño adaptado por Subvención.
+    </footer>
+
+    <!-- Script de Datos e Interactividad -->
+    <script>
+        const themes = {
+            "General": { name: "Subvención General", color: "#059669", bgHeader: "bg-emerald-900", textShare: "text-emerald-700", borderIndicator: "bg-emerald-600", chartColors: ['#047857', '#059669', '#10b981', '#34d399', '#6ee7b7'] },
+            "SEP": { name: "Subvención SEP", color: "#2563eb", bgHeader: "bg-blue-950", textShare: "text-blue-700", borderIndicator: "bg-blue-600", chartColors: ['#1e40af', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'] },
+            "Mantenimiento": { name: "Mantenimiento", color: "#d97706", bgHeader: "bg-amber-950", textShare: "text-amber-700", borderIndicator: "bg-amber-600", chartColors: ['#b45309', '#d97706', '#f59e0b', '#fbbf24', '#fcd34d'] },
+            "Pro-Retencion": { name: "Pro-Retención", color: "#db2777", bgHeader: "bg-pink-950", textShare: "text-pink-700", borderIndicator: "bg-pink-600", chartColors: ['#9d174d', '#db2777', '#ec4899', '#f472b6', '#fbcfe8'] }
+        };
+
+        const data = {
+            "General": {
+                total: 393365204,
+                monthly: {"ABR": 36784138, "AGO": 60325326, "ENE": 33059021, "FEB": 14200993, "JUL": 17318274, "JUN": 36691169, "MAR": 113990013, "MAY": 38281094, "SEPT": 42715176},
+                partidas: {"ARRIENDO DE LOCAL ESCOLAR": 175499685, "INDEMNIZACIONES Y/O FERIADO PROPORCIONAL": 64101802, "CONTRATACIÓN OTROS SERVICIOS EXTERNOS": 35095136, "ELECTRICIDAD": 23025178, "CONTRATACIÓN SERVICIOS DE SEGURIDAD": 19346467, "AGUA": 13388720, "MANTENCIÓN Y REPARACIÓN DE INFRAESTRUCTURA": 9668406, "GASTOS BANCARIOS": 5647587, "OTROS GASTOS DE OPERACIÓN": 11135242, "CONTRATACIÓN SERVICIOS DE ASEO Y JARDINERIA": 5352347, "TELEFONÍA (MÓVIL Y FIJA)": 4734892, "PERFECCIONAMIENTO DE RRHH, CAPACITACIONES Y ASESOR": 7623726, "CONTRATACIÓN DE SEGUROS": 1599000, "MATERIALES Y ÚTILES DE ASEO": 8155557, "DEVOLUCIONES DE FONDOS PÚBLICOS": 2766415, "COMBUSTIBLE Y PEAJES": 1595166, "OTROS GASTOS EN PERSONAL": 1570395, "INSTALACIONES ELÉCTRICAS, ILUMINACIÓN Y SISTEMAS D": 1775650, "GASTOS MUNICIPALES E IMPUESTOS": 125054, "GASTOS NOTARIALES": 160000, "MULTAS E INTERESES FISCALES Y PREVISIONALES": 272604, "MANTENCIÓN Y REPARACIÓN DE BIENES MUEBLES": 708050, "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR": 737196, "INSUMOS COMPUTACIONALES": 856110, "EQUIPOS INFORMÁTICOS Y LICENCIAS": 629380, "GAS": 318002, "INSTALACIONES DE GAS": 141797},
+                columns: ["PARTIDAS", "ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT"],
+                rows: [{"PARTIDAS": "INDEMNIZACIONES Y/O FERIADO PROPORCIONAL", "ENE": 0, "FEB": 1900000, "MAR": 43869277, "ABR": 4040224, "MAY": 2811714, "JUN": 2811714, "JUL": 2766714, "AGO": 2811714, "SEPT": 3090445}, {"PARTIDAS": "OTROS GASTOS EN PERSONAL", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 1570395, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "PERFECCIONAMIENTO DE RRHH, CAPACITACIONES Y ASESOR", "ENE": 0, "FEB": 0, "MAR": 960000, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 1887906, "AGO": 2887914, "SEPT": 1887906}, {"PARTIDAS": "EQUIPOS INFORMÁTICOS Y LICENCIAS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 629380, "SEPT": 0}, {"PARTIDAS": "INSUMOS COMPUTACIONALES", "ENE": 0, "FEB": 0, "MAR": 856110, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "COMBUSTIBLE Y PEAJES", "ENE": 76009, "FEB": 0, "MAR": 448449, "ABR": 124123, "MAY": 227525, "JUN": 230981, "JUL": 85844, "AGO": 146593, "SEPT": 198323}, {"PARTIDAS": "MATERIALES Y ÚTILES DE ASEO", "ENE": 0, "FEB": 0, "MAR": 1880853, "ABR": 1914323, "MAY": 1859872, "JUN": 0, "JUL": 0, "AGO": 2500508, "SEPT": 0}, {"PARTIDAS": "OTROS GASTOS DE OPERACIÓN", "ENE": 244830, "FEB": 0, "MAR": 596899, "ABR": 79570, "MAY": 105744, "JUN": 626117, "JUL": 297763, "AGO": 2948182, "SEPT": 3630120}, {"PARTIDAS": "GASTOS MUNICIPALES E IMPUESTOS", "ENE": 0, "FEB": 0, "MAR": 61965, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 63089, "SEPT": 0}, {"PARTIDAS": "GASTOS BANCARIOS", "ENE": 620592, "FEB": 622147, "MAR": 619060, "ABR": 686711, "MAY": 695807, "JUN": 632757, "JUL": 635571, "AGO": 641638, "SEPT": 593454}, {"PARTIDAS": "CONTRATACIÓN DE SEGUROS", "ENE": 1568897, "FEB": 7466, "MAR": 14973, "ABR": 7538, "MAY": 7625, "JUN": 7674, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "DEVOLUCIONES DE FONDOS PÚBLICOS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 2766415, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "AGUA", "ENE": 1805560, "FEB": 1564830, "MAR": 1383340, "ABR": 2223430, "MAY": 1355170, "JUN": 1594440, "JUL": 1325870, "AGO": 1356600, "SEPT": 1555680}, {"PARTIDAS": "GAS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 90000, "JUL": 228002, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "ELECTRICIDAD", "ENE": 0, "FEB": 6061003, "MAR": 0, "ABR": 3954057, "MAY": 0, "JUN": 6270170, "JUL": 2947087, "AGO": 403994, "SEPT": 3388867}, {"PARTIDAS": "TELEFONÍA (MÓVIL Y FIJA)", "ENE": 0, "FEB": 975768, "MAR": 0, "ABR": 1894062, "MAY": 0, "JUN": 1076306, "JUL": 472684, "AGO": 299794, "SEPT": 28212}, {"PARTIDAS": "CONTRATACIÓN SERVICIOS DE ASEO Y JARDINERIA", "ENE": 140351, "FEB": 1426491, "MAR": 1534195, "ABR": 176991, "MAY": 70796, "JUN": 0, "JUL": 1249500, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "CONTRATACIÓN SERVICIOS DE SEGURIDAD", "ENE": 3794849, "FEB": 0, "MAR": 3794849, "ABR": 0, "MAY": 3794849, "JUN": 1545719, "JUL": 3224279, "AGO": 1440509, "SEPT": 1751413}, {"PARTIDAS": "GASTOS NOTARIALES", "ENE": 0, "FEB": 0, "MAR": 10000, "ABR": 45000, "MAY": 84000, "JUN": 18000, "JUL": 15000, "AGO": 0, "SEPT": 3000}, {"PARTIDAS": "CONTRATACIÓN OTROS SERVICIOS EXTERNOS", "ENE": 5151705, "FEB": 1643288, "MAR": 5259783, "ABR": 2596771, "MAY": 4610050, "JUN": 3370096, "JUL": 1457839, "AGO": 2417004, "SEPT": 8588600}, {"PARTIDAS": "MULTAS E INTERESES FISCALES Y PREVISIONALES", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 145356, "MAY": 0, "JUN": 0, "JUL": 127248, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "ARRIENDO DE LOCAL ESCOLAR", "ENE": 17171742, "FEB": 0, "MAR": 51772803, "ABR": 17429319, "MAY": 17429319, "JUN": 17429319, "JUL": 515154, "AGO": 35834686, "SEPT": 17917343}, {"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE INFRAESTRUCTURA", "ENE": 2342689, "FEB": 0, "MAR": 261057, "ABR": 297217, "MAY": 891813, "JUN": 310876, "JUL": 81813, "AGO": 5235671, "SEPT": 81813}, {"PARTIDAS": "INSTALACIONES ELÉCTRICAS, ILUMINACIÓN Y SISTEMAS D", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 1098650, "MAY": 0, "JUN": 677000, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "INSTALACIONES DE GAS", "ENE": 141797, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE BIENES MUEBLES", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 708050, "SEPT": 0}, {"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR", "ENE": 0, "FEB": 0, "MAR": 666400, "ABR": 70796, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}]
+            },
+            "SEP": {
+                total: 193667341,
+                monthly: {"ABR": 27364872, "AGO": 17657378, "ENE": 6359245, "FEB": 8638503, "JUL": 53158147, "JUN": 29950002, "MAR": 30410569, "MAY": 4934719, "SEPT": 15193906},
+                partidas: {"OTROS GASTOS DE OPERACIÓN": 107227876, "INDEMNIZACIONES Y/O FERIADO PROPORCIONAL": 24661585, "MATERIAL Y RECURSOS DIDÁCTICOS": 17783686, "ALIMENTACIÓN": 11088704, "TALLERES EXTRAPROGRAMATICOS": 10062585, "TRANSPORTE ESCOLAR": 6810000, "EQUIPOS MULTICOPIADORES": 5880461, "ASESORÍA TÉCNICA Y CAPACITACIÓN DE EMPRESAS (REGIS": 1784000, "EVENTOS EDUCATIVOS Y CULTURALES": 2902535, "INTERNET": 1160191, "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR": 1344266, "INSUMOS COMPUTACIONALES": 817066, "EQUIPOS INFORMÁTICOS Y LICENCIAS": 654370, "INSTRUMENTOS MUSICALES Y ARTÍSTICOS": 410610, "OTROS GASTOS EN EQUIPAMIENTO DE APOYO PEDAGÓGICO": 481046, "OTROS GASTOS BIENESTAR ALUMNOS": 300000},
+                columns: ["PARTIDAS", "ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT"],
+                rows: [{"PARTIDAS": "INDEMNIZACIONES Y/O FERIADO PROPORCIONAL", "ENE": 0, "FEB": 0, "MAR": 19595622, "ABR": 4819782, "MAY": 246181, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "ASESORÍA TÉCNICA Y CAPACITACIÓN DE EMPRESAS (REGIS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 1784000, "SEPT": 0}, {"PARTIDAS": "INSTRUMENTOS MUSICALES Y ARTÍSTICOS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 410610, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "MATERIAL Y RECURSOS DIDÁCTICOS", "ENE": 314927, "FEB": 0, "MAR": 1832871, "ABR": 9160163, "MAY": 0, "JUN": 2831117, "JUL": 793283, "AGO": 2258241, "SEPT": 593084}, {"PARTIDAS": "EVENTOS EDUCATIVOS Y CULTURALES", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 1113782, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 1788753}, {"PARTIDAS": "EQUIPOS INFORMÁTICOS Y LICENCIAS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 654370, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "EQUIPOS MULTICOPIADORES", "ENE": 266042, "FEB": 0, "MAR": 0, "ABR": 1503458, "MAY": 0, "JUN": 1483341, "JUL": 796014, "AGO": 1033686, "SEPT": 796460}, {"PARTIDAS": "OTROS GASTOS EN EQUIPAMIENTO DE APOYO PEDAGÓGICO", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 481046, "SEPT": 0}, {"PARTIDAS": "OTROS GASTOS BIENESTAR ALUMNOS", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 300000, "JUL": 0, "AGO": 0, "SEPT": 0}, {"PARTIDAS": "TALLERES EXTRAPROGRAMATICOS", "ENE": 685439, "FEB": 0, "MAR": 0, "ABR": 1379381, "MAY": 844779, "JUN": 4342124, "JUL": 747500, "AGO": 501592, "SEPT": 1561770}, {"PARTIDAS": "TRANSPORTE ESCOLAR", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 290000, "MAY": 0, "JUN": 4270000, "JUL": 0, "AGO": 1750000, "SEPT": 800000}, {"PARTIDAS": "ALIMENTACIÓN", "ENE": 2637690, "FEB": 0, "MAR": 2209256, "ABR": 1677254, "MAY": 249737, "JUN": 3234348, "JUL": 227069, "AGO": 344649, "SEPT": 508701}, {"PARTIDAS": "INSUMOS COMPUTACIONALES", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 742560, "SEPT": 74506}, {"PARTIDAS": "OTROS GASTOS DE OPERACIÓN", "ENE": 2455147, "FEB": 7294237, "MAR": 6772820, "ABR": 7246071, "MAY": 2480240, "JUN": 13011555, "JUL": 50364987, "AGO": 8532187, "SEPT": 9070632}, {"PARTIDAS": "INTERNET", "ENE": 0, "FEB": 0, "MAR": 0, "ABR": 223783, "MAY": 0, "JUN": 477517, "JUL": 229294, "AGO": 229417, "SEPT": 0}, {"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR", "ENE": 0, "FEB": 1344266, "MAR": 0, "ABR": 0, "MAY": 0, "JUN": 0, "JUL": 0, "AGO": 0, "SEPT": 0}]
+            },
+            "Mantenimiento": {
+                total: 24047465,
+                monthly: {"AGO": 6887642, "FEB": 5640600, "JUL": 10269223, "SEPT": 1250000},
+                partidas: {"MANTENCIÓN Y REPARACIÓN DE INFRAESTRUCTURA": 17156865, "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR": 5640600, "INSTALACIONES ELÉCTRICAS, ILUMINACIÓN Y SISTEMAS D": 1250000},
+                columns: ["PARTIDAS", "FEB", "JUL", "AGO", "SEPT"],
+                rows: [{"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE INFRAESTRUCTURA", "FEB": 0, "JUL": 10269223, "AGO": 6887642, "SEPT": 0}, {"PARTIDAS": "INSTALACIONES ELÉCTRICAS, ILUMINACIÓN Y SISTEMAS D", "FEB": 0, "JUL": 0, "AGO": 0, "SEPT": 1250000}, {"PARTIDAS": "MANTENCIÓN Y REPARACIÓN DE MOBILIARIO ESCOLAR", "FEB": 5640600, "JUL": 0, "AGO": 0, "SEPT": 0}]
+            },
+            "Pro-Retencion": {
+                total: 8460567,
+                monthly: {"JUN": 3583685, "MAY": 2101231, "SEPT": 2775651},
+                partidas: {"ALIMENTACIÓN": 4876882, "UNIFORMES Y VESTUARIO": 3583685},
+                columns: ["PARTIDAS", "MAY", "JUN", "SEPT"],
+                rows: [{"PARTIDAS": "UNIFORMES Y VESTUARIO", "MAY": 0, "JUN": 3583685, "SEPT": 0}, {"PARTIDAS": "ALIMENTACIÓN", "MAY": 2101231, "JUN": 0, "SEPT": 2775651}]
+            }
+        };
+
+        const globalTotal = Object.values(data).reduce((acc, curr) => acc + curr.total, 0);
+        document.getElementById('global-total').innerText = formatCLP(globalTotal);
+
+        let monthlyChartInstance = null;
+        let partidaChartInstance = null;
+        let currentSub = 'General';
+
+        function formatCLP(amount) {
+            return '$' + amount.toLocaleString('es-CL');
+        }
+
+        function switchTab(subName) {
+            currentSub = subName;
+            
+            // Update active styles on tabs and colors
+            Object.keys(themes).forEach(key => {
+                const btn = document.getElementById(`btn-${key}`);
+                const th = themes[key];
+                if(key === subName) {
+                    btn.className = `tab-btn py-4 px-3 font-semibold text-sm border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors`;
+                    btn.style.borderColor = th.color;
+                    btn.style.color = th.color;
+                } else {
+                    btn.className = `tab-btn py-4 px-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 whitespace-nowrap transition-colors`;
+                    btn.style.borderColor = 'transparent';
+                    btn.style.color = '';
+                }
+            });
+
+            // Update Header & KPI accents
+            const activeTheme = themes[subName];
+            const header = document.getElementById('header-bg');
+            header.className = `${activeTheme.bgHeader} text-white shadow-md transition-colors duration-300`;
+
+            document.getElementById('kpi-indicator-1').style.backgroundColor = activeTheme.color;
+            document.getElementById('kpi-indicator-2').style.backgroundColor = activeTheme.color;
+            document.getElementById('kpi-indicator-3').style.backgroundColor = activeTheme.color;
+
+            renderDashboard();
+        }
+
+        function renderDashboard() {
+            const subData = data[currentSub];
+            const activeTheme = themes[currentSub];
+            
+            // KPIs
+            document.getElementById('kpi-total').innerText = formatCLP(subData.total);
+            const share = ((subData.total / globalTotal) * 100).toFixed(1);
+            const shareEl = document.getElementById('kpi-share');
+            shareEl.innerText = `${share}% del presupuesto global`;
+            shareEl.style.color = activeTheme.color;
+
+            // Top Partida
+            const sortedPartidas = Object.entries(subData.partidas).sort((a,b) => b[1] - a[1]);
+            if(sortedPartidas.length > 0) {
+                document.getElementById('kpi-top-partida').innerText = sortedPartidas[0][0];
+                document.getElementById('kpi-top-partida').title = sortedPartidas[0][0];
+                document.getElementById('kpi-top-monto').innerText = formatCLP(sortedPartidas[0][1]);
+            }
+
+            // Top Mes
+            const sortedMonths = Object.entries(subData.monthly).sort((a,b) => b[1] - a[1]);
+            if(sortedMonths.length > 0) {
+                document.getElementById('kpi-top-mes').innerText = sortedMonths[0][0];
+                document.getElementById('kpi-top-mes-monto').innerText = formatCLP(sortedMonths[0][1]);
+            }
+
+            // Charts
+            renderCharts(subData, activeTheme);
+
+            // Table
+            renderTable(subData, activeTheme);
+        }
+
+        function renderCharts(subData, activeTheme) {
+            // Monthly Chart
+            const ctxMonthly = document.getElementById('monthlyChart').getContext('2d');
+            if(monthlyChartInstance) monthlyChartInstance.destroy();
+
+            const monthLabels = Object.keys(subData.monthly);
+            const monthValues = Object.values(subData.monthly);
+
+            monthlyChartInstance = new Chart(ctxMonthly, {
+                type: 'bar',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: 'Monto Ejecutado ($)',
+                        data: monthValues,
+                        backgroundColor: activeTheme.color,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { ticks: { callback: function(value) { return '$' + (value/1000000).toFixed(0) + 'M'; } } }
+                    }
+                }
+            });
+
+            // Partidas Chart (Top 5)
+            const ctxPartida = document.getElementById('partidaChart').getContext('2d');
+            if(partidaChartInstance) partidaChartInstance.destroy();
+
+            const top5Partidas = Object.entries(subData.partidas).sort((a,b) => b[1] - a[1]).slice(0, 5);
+
+            partidaChartInstance = new Chart(ctxPartida, {
+                type: 'doughnut',
+                data: {
+                    labels: top5Partidas.map(item => item[0]),
+                    datasets: [{
+                        data: top5Partidas.map(item => item[1]),
+                        backgroundColor: activeTheme.chartColors
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        function renderTable(subData, activeTheme) {
+            const thead = document.getElementById('table-head');
+            const tbody = document.getElementById('table-body');
+            
+            thead.innerHTML = '';
+            tbody.innerHTML = '';
+
+            // Header row
+            let headerRow = '<tr>';
+            subData.columns.forEach(col => {
+                headerRow += `<th class="py-3 px-4 font-semibold">${col}</th>`;
+            });
+            headerRow += '<th class="py-3 px-4 font-semibold text-right">TOTAL PARTIDA</th></tr>';
+            thead.innerHTML = headerRow;
+
+            // Body rows
+            subData.rows.forEach(row => {
+                let tr = `<tr class="hover:bg-slate-50 transition-colors">`;
+                let rowTotal = 0;
+                subData.columns.forEach(col => {
+                    if(col === 'PARTIDAS') {
+                        tr += `<td class="py-3 px-4 font-medium text-slate-800">${row[col]}</td>`;
+                    } else {
+                        const val = row[col] || 0;
+                        rowTotal += val;
+                        tr += `<td class="py-3 px-4 text-slate-600">${val > 0 ? formatCLP(val) : '-'}</td>`;
+                    }
+                });
+                tr += `<td class="py-3 px-4 font-bold text-slate-800 text-right">${formatCLP(rowTotal)}</td>`;
+                tr += `</tr>`;
+                tbody.innerHTML += tr;
+            });
+        }
+
+        function filterTable() {
+            const input = document.getElementById('table-search').value.toLowerCase();
+            const tbody = document.getElementById('table-body');
+            const trs = tbody.getElementsByTagName('tr');
+
+            for (let i = 0; i < trs.length; i++) {
+                const tdPartida = trs[i].getElementsByTagName('td')[0];
+                if (tdPartida) {
+                    const txtValue = tdPartida.textContent || tdPartida.innerText;
+                    if (txtValue.toLowerCase().indexOf(input) > -1) {
+                        trs[i].style.display = "";
+                    } else {
+                        trs[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Initial Load
+        switchTab('General');
+    </script>
+</body>
+</html>

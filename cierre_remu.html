@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportería Cierre de Remuneraciones - Liceo Particular Avenida Recoleta</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        elarBlue: '#1a234d',
+                        elarBlueDark: '#0e1630',
+                        elarRed: '#d32f2f',
+                        elarRedHover: '#c62828',
+                        elarGold: '#fbc02d',
+                        elarGoldLight: '#fef9e7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .elar-gradient-header {
+            background: linear-gradient(135deg, #1a234d 0%, #0e1630 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgba(26, 35, 77, 0.15), 0 4px 6px -2px rgba(26, 35, 77, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 bg-slate-50">
+
+    <!-- Encabezado Principal / Header -->
+    <header class="elar-gradient-header text-white border-b-4 border-elarGold shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Logos e Identidad Institucional -->
+                <div class="flex items-center gap-5 text-center md:text-left">
+                    <div class="bg-white p-2 rounded-xl shadow-md flex-shrink-0 border-2 border-elarGold flex items-center justify-center">
+                        <!-- Insignia Oficial ELAR -->
+                        <img src="Logo.png" alt="Insignia Liceo Particular Avenida Recoleta ELAR" class="h-20 sm:h-24 w-auto object-contain drop-shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x120/1a234d/fbc02d?text=ELAR';">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Liceo Particular Avenida Recoleta</h1>
+                        <p class="text-elarGold font-semibold text-sm sm:text-base mt-0.5">ELAR &bull; RBD 10320</p>
+                        <p class="text-xs text-slate-300 mt-1">Educación Científico-Humanista orientada a la excelencia académica y valores cristianos</p>
+                    </div>
+                </div>
+
+                <!-- Datos de contacto rápido -->
+                <div class="flex flex-col sm:flex-row md:flex-col gap-2 text-xs sm:text-sm text-slate-200 border-t md:border-t-0 md:border-l border-slate-700/80 pt-3 md:pt-0 md:pl-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-elarGold w-4 text-center"></i>
+                        <span>Av. Recoleta 3848, Recoleta (Metro Zapadores)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-elarGold w-4 text-center"></i>
+                        <span>(+56) 2 2461 6240</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-elarGold w-4 text-center"></i>
+                        <span>contacto@elar.cl</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Barra de Navegación y Título de la Sección -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl card-shadow border-l-8 border-emerald-600">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold text-xs rounded-full uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-chart-line"></i> Módulo de Remuneraciones
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-elarBlue">Reportería General Cierre de Remuneraciones</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Seleccione un mes del año para acceder al detalle de registros correspondientes.</p>
+            </div>
+            <div>
+                <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-colors">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al Portal
+                </a>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Indicadores Clave (KPIs) Detallada por Subvención -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-white rounded-2xl border-2 border-emerald-600 card-shadow p-6 sm:p-8 w-full max-w-5xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-chart-pie"></i> Consolidado por Subvención
+                </div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-elarBlue">Costo Total de Remuneraciones a la Fecha</h3>
+                        <p class="text-xs sm:text-sm text-slate-500">Desglose financiero detallado por Subvención General y Subvención SEP</p>
+                    </div>
+                </div>
+
+                <!-- Grid de Subvenciones -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Subvención General -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 card-shadow">
+                        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
+                            <span class="text-sm font-bold text-elarBlue flex items-center gap-2">
+                                <i class="fa-solid fa-building-columns text-emerald-600"></i> Subvención General
+                            </span>
+                            <span class="px-2.5 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">General</span>
+                        </div>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center text-slate-600">
+                                <span>Haberes:</span>
+                                <span class="font-bold text-slate-800">$1.121.847.881</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-600">
+                                <span>Leyes Sociales:</span>
+                                <span class="font-bold text-slate-800">$61.139.064</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-200 font-bold text-elarBlue">
+                                <span>Total General:</span>
+                                <span class="text-base sm:text-lg text-emerald-700">$1.182.986.945</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subvención SEP -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 card-shadow">
+                        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
+                            <span class="text-sm font-bold text-elarBlue flex items-center gap-2">
+                                <i class="fa-solid fa-book-open text-emerald-600"></i> Subvención Escolar Preferencial (SEP)
+                            </span>
+                            <span class="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">SEP</span>
+                        </div>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center text-slate-600">
+                                <span>Haberes:</span>
+                                <span class="font-bold text-slate-800">$340.890.056</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-600">
+                                <span>Leyes Sociales:</span>
+                                <span class="font-bold text-slate-800">$15.355.020</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-200 font-bold text-elarBlue">
+                                <span>Total SEP:</span>
+                                <span class="text-base sm:text-lg text-emerald-700">$356.245.076</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen Global Consolidado -->
+                <div class="bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-base font-bold">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-emerald-900">Total Consolidado Anual</h4>
+                            <p class="text-xs text-emerald-700">Suma total de haberes y leyes sociales de ambas subvenciones</p>
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <span class="text-2xl sm:text-3xl font-extrabold text-emerald-700">$1.539.232.021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjetas de los Meses del Año (3 Filas x 4 Columnas) con enlace a junio.html -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+            <!-- Enero -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">01</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 01</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Enero</h3>
+                <a href="enero.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Febrero -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">02</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 02</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Febrero</h3>
+                <a href="febrero.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Marzo -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">03</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 03</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Marzo</h3>
+                <a href="marzo.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Abril -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">04</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 04</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Abril</h3>
+                <a href="abril.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Mayo -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">05</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 05</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Mayo</h3>
+                <a href="mayo.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Junio -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">06</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 06</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Junio</h3>
+                <a href="junio.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Julio -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">07</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 07</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Julio</h3>
+                <a href="julio.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Agosto -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">08</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 08</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Agosto</h3>
+                <a href="agosto.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Septiembre -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">09</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 09</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Septiembre</h3>
+                <a href="septiembre.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Octubre -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">10</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 10</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Octubre</h3>
+                <a href="octubre.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Noviembre -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">11</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 11</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Noviembre</h3>
+                <a href="noviembre.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+            <!-- Diciembre -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 transition-all duration-200 card-shadow hover:-translate-y-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-sm">12</span>
+                    <span class="text-xs font-semibold text-slate-400">Mes 12</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Diciembre</h3>
+                <a href="diciembre.html" class="w-full py-2.5 px-3 bg-slate-50 hover:bg-emerald-600 hover:text-white text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 text-center">
+                    <i class="fa-regular fa-folder-open"></i> Ver Cierre
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Pie de Página / Footer -->
+    <footer class="bg-elarBlue text-white py-6 border-t-4 border-elarGold mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-300">
+            <p>&copy; 2026 Liceo Particular Avenida Recoleta (ELAR) &bull; Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
