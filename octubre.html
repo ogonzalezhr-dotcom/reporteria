@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Auditoría de Remuneraciones - Octubre 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #1e3a8a;
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-12">
+
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-950 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-2 rounded-lg shadow">
+                    <img src="Logo.png" alt="Logo ELAR Liceo Particular Avenida Recoleta" class="h-16 w-auto object-contain">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">FUNDACIÓN MARÍA ROMO</h1>
+                    <p class="text-indigo-200 text-sm">Liceo Particular Avenida Recoleta (RDB 10320-9)</p>
+                    <p class="text-xs text-indigo-300 font-semibold mt-1"><i class="fa-solid fa-file-signature mr-1"></i> INFORME DE CIERRE DE REMUNERACIONES — OCTUBRE 2026</p>
+                </div>
+            </div>
+
+            <div class="header-center">
+                <a href="cierre_remu.html" class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-semibold text-xs px-4 py-2 rounded-lg border border-indigo-700 transition-colors shadow-sm">
+                    ⬅ Volver al Menú Principal
+                </a>
+            </div>
+
+            <div class="text-right bg-indigo-900/80 px-4 py-2 rounded-lg border border-indigo-700/50">
+                <span class="block text-xs uppercase tracking-wider text-indigo-300 font-medium">Estado del Proceso</span>
+                <span class="inline-flex items-center gap-1.5 text-emerald-400 font-bold text-sm">
+                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Cierre Cuadrado
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 mt-6 space-y-6">
+
+        <!-- KPI Cards Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Card 1 -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Total Haberes Brutos</p>
+                    <h3 class="text-2xl font-black text-slate-900 mt-1">$160.047.825</h3>
+                    <p class="text-xs text-slate-500 mt-1">Imponible: $154.043.863 | No Imp: $6.003.962</p>
+                </div>
+                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-coins"></i>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Total Descuentos</p>
+                    <h3 class="text-2xl font-black text-red-600 mt-1">$36.297.740</h3>
+                    <p class="text-xs text-slate-500 mt-1">Legales: $29.008.925 | Otros: $7.288.815</p>
+                </div>
+                <div class="w-12 h-12 bg-red-100 text-red-700 rounded-lg flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Sueldos Líquidos Pagados</p>
+                    <h3 class="text-2xl font-black text-emerald-600 mt-1">$123.750.085</h3>
+                    <p class="text-xs text-emerald-700 font-semibold mt-1">129 Nómina Banco + 2 Cheque</p>
+                </div>
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Próximos Pagos (Leyes/F29)</p>
+                    <h3 class="text-2xl font-black text-indigo-900 mt-1">$45.029.248</h3>
+                    <p class="text-xs text-slate-500 mt-1">PreviRed: $43.829.658 | F29: $1.199.590</p>
+                </div>
+                <div class="w-12 h-12 bg-indigo-100 text-indigo-900 rounded-lg flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Agrupado por Subvención (Interactive) -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-indigo-800"></i>
+                        Detalle Agrupado por Subvención (Haberes Imponibles y No Imponibles)
+                    </h2>
+                    <p class="text-xs text-slate-500">Distribución de remuneraciones de acuerdo a las fuentes de financiamiento del establecimiento.</p>
+                </div>
+                <!-- Interactive Filter Buttons -->
+                <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
+                    <button onclick="filterSubvencion('TODAS')" id="btn-TODAS" class="sub-btn text-xs font-bold px-3 py-1.5 rounded-md bg-white text-indigo-900 shadow-sm transition-all">Todas</button>
+                    <button onclick="filterSubvencion('GENERAL')" id="btn-GENERAL" class="sub-btn text-xs font-semibold px-3 py-1.5 rounded-md text-slate-600 hover:text-indigo-900 transition-all">General</button>
+                    <button onclick="filterSubvencion('SEP')" id="btn-SEP" class="sub-btn text-xs font-semibold px-3 py-1.5 rounded-md text-slate-600 hover:text-indigo-900 transition-all">SEP</button>
+                </div>
+            </div>
+
+            <!-- Summary Table By Subvencion -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div class="bg-blue-50/70 border border-blue-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-blue-900"><i class="fa-solid fa-school mr-1"></i> Subvención GENERAL</span>
+                        <span class="text-xs bg-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded">77,92% del Total</span>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-700"><span>Haberes Imponibles:</span><span class="font-bold">$120.393.452</span></div>
+                        <div class="flex justify-between text-slate-700"><span>Haberes No Imponibles:</span><span class="font-bold">$4.322.457</span></div>
+                        <div class="flex justify-between text-blue-950 font-black border-t border-blue-200 pt-1 text-sm"><span>Total Haberes Brutos General:</span><span>$124.715.909</span></div>
+                        <div class="flex justify-between text-slate-500 italic text-[11px] pt-0.5"><span>Cuadratura Costo por Subvención:</span><span>$132.035.887</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50/70 border border-emerald-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-emerald-900"><i class="fa-solid fa-book-open mr-1"></i> Subvención SEP (Preferencia)</span>
+                        <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">22,08% del Total</span>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-700"><span>Haberes Imponibles:</span><span class="font-bold">$33.650.411</span></div>
+                        <div class="flex justify-between text-slate-700"><span>Haberes No Imponibles:</span><span class="font-bold">$1.681.505</span></div>
+                        <div class="flex justify-between text-emerald-950 font-black border-t border-emerald-200 pt-1 text-sm"><span>Total Haberes Brutos SEP:</span><span>$35.331.916</span></div>
+                        <div class="flex justify-between text-slate-500 italic text-[11px] pt-0.5"><span>Cuadratura Costo por Subvención:</span><span>$37.018.754</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Table of Haberes -->
+            <div class="overflow-x-auto mt-4 max-h-[400px] overflow-y-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead class="sticky top-0 z-10">
+                        <tr class="bg-slate-100 text-slate-700 uppercase font-bold border-b border-slate-300">
+                            <th class="p-2.5">Cód.</th>
+                            <th class="p-2.5">Concepto / Haber</th>
+                            <th class="p-2.5">Tipo</th>
+                            <th class="p-2.5">Subvención</th>
+                            <th class="p-2.5 text-right">Monto ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200" id="haberes-tbody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                    <tfoot class="sticky bottom-0 z-10">
+                        <tr class="bg-slate-100 font-bold text-slate-900 border-t-2 border-slate-300">
+                            <td colspan="4" class="p-2.5 text-right uppercase">Total Haberes Filtrados:</td>
+                            <td class="p-2.5 text-right text-indigo-900 font-black text-sm" id="haberes-total-foot">$160.047.825</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Descuentos del Proceso 2026 -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="pb-4 border-b border-slate-200">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice-dollar text-red-600"></i>
+                    Detalle de Descuentos en el Proceso de Remuneraciones Octubre 2026
+                </h2>
+                <p class="text-xs text-slate-500">Desglose integral de descuentos legales reglamentarios y otros descuentos institucionales/voluntarios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                <!-- Descuentos Legales -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50/50">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                            <i class="fa-solid fa-scale-balanced text-slate-600"></i> Descuentos Legales
+                        </h3>
+                        <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">$29.008.925</span>
+                    </div>
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="text-slate-500 border-b border-slate-200">
+                                <th class="pb-2 text-left">Cód.</th>
+                                <th class="pb-2 text-left">Concepto</th>
+                                <th class="pb-2 text-right">Monto ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-700">
+                            <tr><td class="py-1.5 font-mono">2000</td><td>Previsión (AFP Cotización Obligatoria)</td><td class="py-1.5 text-right font-semibold">$14.687.634</td></tr>
+                            <tr><td class="py-1.5 font-mono">2001</td><td>Salud (7% Legal Fonasa e Isapres)</td><td class="py-1.5 text-right font-semibold">$10.651.540</td></tr>
+                            <tr><td class="py-1.5 font-mono">2003</td><td>Adicional Isapre (Pactado en UF)</td><td class="py-1.5 text-right font-semibold">$1.970.316</td></tr>
+                            <tr><td class="py-1.5 font-mono">2005</td><td>Impuesto Único (2da Categoría SII)</td><td class="py-1.5 text-right font-semibold">$1.199.590</td></tr>
+                            <tr><td class="py-1.5 font-mono">2026</td><td>Seguro Cesantía PXP (0.6% Trabajador)</td><td class="py-1.5 text-right font-semibold">$499.845</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Otros Descuentos -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50/50">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                            <i class="fa-solid fa-tags text-slate-600"></i> Otros Descuentos / CCAF
+                        </h3>
+                        <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">$7.288.815</span>
+                    </div>
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="text-slate-500 border-b border-slate-200">
+                                <th class="pb-2 text-left">Cód.</th>
+                                <th class="pb-2 text-left">Concepto</th>
+                                <th class="pb-2 text-right">Monto ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-700">
+                            <tr><td class="py-1.5 font-mono">2011</td><td>Anticipo de Sueldo</td><td class="py-1.5 text-right font-semibold">$125.000</td></tr>
+                            <tr><td class="py-1.5 font-mono">2016</td><td>Crédito CCAF Los Andes</td><td class="py-1.5 text-right font-semibold">$6.678.318</td></tr>
+                            <tr><td class="py-1.5 font-mono">2020</td><td>SERBIMA</td><td class="py-1.5 text-right font-semibold">$31.058</td></tr>
+                            <tr><td class="py-1.5 font-mono">2028</td><td>Otros Descuentos Varios</td><td class="py-1.5 text-right font-semibold">$119.250</td></tr>
+                            <tr><td class="py-1.5 font-mono">2040</td><td>Full Ahorro CCAF Los Andes</td><td class="py-1.5 text-right font-semibold">$236.623</td></tr>
+                            <tr><td class="py-1.5 font-mono">2057</td><td>Seguro de Vida CCAF Los Andes</td><td class="py-1.5 text-right font-semibold">$98.566</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Detalle de Sueldos Líquidos y Dotación -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="pb-4 border-b border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-emerald-600"></i>
+                        Detalle de Sueldos Líquidos Pagados y Dotación de Personal (OCTUBRE 2026)
+                    </h2>
+                    <p class="text-xs text-slate-500">Conciliación directa con el archivo de nómina "Sueldos Líquidos Octubre" (Líquidos y Cheques).</p>
+                </div>
+                <div class="flex gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">
+                        131 Remunerados ($123.750.085)
+                    </span>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-300">
+                        3 No Remunerados ($0)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Dotacion Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-center">
+                    <span class="block text-xs uppercase font-bold text-slate-500">Total Dotación Registrada</span>
+                    <span class="text-3xl font-black text-slate-900">134</span>
+                    <span class="block text-xs text-slate-500 mt-1">Trabajadores en libro</span>
+                </div>
+                <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-center">
+                    <span class="block text-xs uppercase font-bold text-emerald-700">Pagados por Banco</span>
+                    <span class="text-3xl font-black text-emerald-700">129</span>
+                    <span class="block text-xs text-emerald-600 font-semibold mt-1">Suma: $122.828.887</span>
+                </div>
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center">
+                    <span class="block text-xs uppercase font-bold text-blue-800">Pagados con Cheque</span>
+                    <span class="text-3xl font-black text-blue-700">2</span>
+                    <span class="block text-xs text-blue-600 font-semibold mt-1">Suma: $921.198</span>
+                </div>
+                <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-center">
+                    <span class="block text-xs uppercase font-bold text-amber-800">No Remunerados</span>
+                    <span class="text-3xl font-black text-amber-700">3</span>
+                    <span class="block text-xs text-amber-700 mt-1">Líquido de $0</span>
+                </div>
+            </div>
+
+            <!-- Detail Cheque Staff -->
+            <div class="bg-blue-50/60 border border-blue-200 rounded-lg p-4 mb-4">
+                <h4 class="text-xs uppercase font-bold text-blue-900 mb-2 flex items-center gap-1.5">
+                    <i class="fa-solid fa-money-check text-blue-600"></i> Detalle de Funcionarios Pagados con Cheque (Octubre 2026):
+                </h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left">
+                        <thead>
+                            <tr class="bg-blue-100 text-blue-900 font-bold">
+                                <th class="p-2">Nº Reg.</th>
+                                <th class="p-2">Nombre Funcionario</th>
+                                <th class="p-2">Período</th>
+                                <th class="p-2">Sueldo Líquido</th>
+                                <th class="p-2">Modalidad de Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-blue-200 text-slate-800">
+                            <tr>
+                                <td class="p-2 font-bold font-mono">133</td>
+                                <td class="p-2 font-bold text-slate-900">NAVARRO RIVAS DIEGO NICOLAS</td>
+                                <td class="p-2">10/2026</td>
+                                <td class="p-2 font-bold text-blue-700">$648.215</td>
+                                <td class="p-2 italic text-slate-600">Pago con Cheque</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-bold font-mono">134</td>
+                                <td class="p-2 font-bold text-slate-900">RIOJA VEGA PAULA ELIZABETH</td>
+                                <td class="p-2">10/2026</td>
+                                <td class="p-2 font-bold text-blue-700">$272.983</td>
+                                <td class="p-2 italic text-slate-600">Pago con Cheque</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detail Non-Remunerated Staff -->
+            <div class="bg-amber-50/60 border border-amber-200 rounded-lg p-4">
+                <h4 class="text-xs uppercase font-bold text-amber-900 mb-2 flex items-center gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Detalle de Funcionarios No Remunerados en Período Octubre 2026:
+                </h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left">
+                        <thead>
+                            <tr class="bg-amber-100 text-amber-900 font-bold">
+                                <th class="p-2">Nº Reg.</th>
+                                <th class="p-2">Nombre Funcionario</th>
+                                <th class="p-2">Período</th>
+                                <th class="p-2">Sueldo Líquido</th>
+                                <th class="p-2">Observación Auditoría</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-amber-200 text-slate-800">
+                            <tr>
+                                <td class="p-2 font-bold font-mono">3</td>
+                                <td class="p-2 font-bold text-slate-900">ADASME VELASQUEZ HECTOR MARCELINO</td>
+                                <td class="p-2">10/2026</td>
+                                <td class="p-2 font-bold text-red-600">$0</td>
+                                <td class="p-2 italic text-slate-600">Licencia médica / Subsidio SIL.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-bold font-mono">57</td>
+                                <td class="p-2 font-bold text-slate-900">GOYENECHEA CORVALAN CECILIA VERONICA DEL CARMEN</td>
+                                <td class="p-2">10/2026</td>
+                                <td class="p-2 font-bold text-red-600">$0</td>
+                                <td class="p-2 italic text-slate-600">Licencia médica (31 días) / Subsidio SIL.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-bold font-mono">76</td>
+                                <td class="p-2 font-bold text-slate-900">MENESES GAETE BLANCA DE LAS MERCEDES</td>
+                                <td class="p-2">10/2026</td>
+                                <td class="p-2 font-bold text-red-600">$0</td>
+                                <td class="p-2 italic text-slate-600">Licencia médica (31 días) / Subsidio SIL.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Próximos Pagos y PreviRed Octubre -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="pb-4 border-b border-slate-200">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days text-indigo-900"></i>
+                    Próximos Pagos Asociados al Proceso de Remuneraciones
+                </h2>
+                <p class="text-xs text-slate-500">Compromisos previsionales y tributarios a ser liquidados en el mes de Noviembre de 2026.</p>
+            </div>
+
+            <!-- Warning Box -->
+            <div class="mt-4 p-3 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg text-amber-900 text-xs font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-base"></i>
+                <span><strong>ADVERTENCIA DE COBERTURA IMPOSITIVA:</strong> No se consideran las Retenciones por Boletas de Honorarios. Este informe abarca únicamente las remuneraciones y descuentos de trabajadores bajo contrato dependiente.</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
+                <!-- PreviRed Summary Table -->
+                <div class="lg:col-span-2 border border-slate-200 rounded-lg p-4 bg-slate-50/50">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-indigo-950 flex items-center gap-1.5">
+                            <i class="fa-solid fa-list-check text-indigo-800"></i> Resumen Cuadratura PreviRed (Octubre 2026)
+                        </h3>
+                        <span class="text-xs font-bold text-indigo-900 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200">
+                            Total Leyes Sociales: $43.829.658
+                        </span>
+                    </div>
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="bg-slate-200 text-slate-700 font-bold">
+                                <th class="p-2 text-left">Institución / Destino</th>
+                                <th class="p-2 text-right">Monto Total ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-800">
+                            <tr><td class="p-2 font-medium">Fondos de Pensiones (AFPs)</td><td class="p-2 text-right font-bold">$18.701.323</td></tr>
+                            <tr><td class="p-2 font-medium">Total Seguro Social (Rentabilidad Protegida, Expectativa de Vida, SIS)</td><td class="p-2 text-right font-bold">$4.724.915</td></tr>
+                            <tr><td class="p-2 font-medium">ISAPRE (Banmédica, Colmena, Consalud, Cruz Blanca, Nueva Mas Vida, Vida Tres)</td><td class="p-2 text-right font-bold">$5.678.353</td></tr>
+                            <tr><td class="p-2 font-medium">IPS / FONASA (Cotización Salud 7% Pública)</td><td class="p-2 text-right font-bold">$2.777.402</td></tr>
+                            <tr><td class="p-2 font-medium">Mutual (Asociación Chilena de Seguridad - ACHS / Ley Sanna)</td><td class="p-2 text-right font-bold">$1.417.389</td></tr>
+                            <tr><td class="p-2 font-medium">CCAF (Caja de Compensación Los Andes - Créditos, Ahorro, Seguros y Fonasa)</td><td class="p-2 text-right font-bold">$10.530.276</td></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-indigo-950 text-white font-bold">
+                                <td class="p-2 text-left">TOTAL LEYES SOCIALES PREVIRED:</td>
+                                <td class="p-2 text-right text-emerald-400 font-black text-sm">$43.829.658</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <!-- Form 29 Single Tax & Global Obligations -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50/50 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-1.5">
+                            <i class="fa-solid fa-receipt text-slate-700"></i> Impuesto Único (F29)
+                        </h3>
+                        <div class="bg-white border border-slate-200 p-3 rounded-lg text-xs space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-slate-600">Código 2005 (F29):</span>
+                                <span class="font-bold text-slate-900">$1.199.590</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-600">Vencimiento Obligaciones:</span>
+                                <span class="font-semibold text-slate-800">12 a 20 de Noviembre 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-200 bg-indigo-50 border border-indigo-200 p-3 rounded-lg">
+                        <span class="block text-xs uppercase font-bold text-indigo-900">Total Obligaciones por Pagar:</span>
+                        <div class="flex justify-between items-baseline mt-1">
+                            <span class="text-xs text-indigo-700">PreviRed + Imp. Único:</span>
+                            <span class="text-xl font-black text-indigo-950">$45.029.248</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Audited Ledger Verification & Summary Table -->
+        <div class="bg-slate-900 text-white rounded-xl shadow-md p-6">
+            <h3 class="text-base font-bold text-amber-400 flex items-center gap-2 mb-3">
+                <i class="fa-solid fa-clipboard-check"></i>
+                Cuadratura de Auditoría Contable — Cierre de Cuentas Octubre 2026 (Cuadrado)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                <div class="bg-slate-800/80 p-3 rounded border border-slate-700">
+                    <span class="block text-slate-400">Total Haberes Brutos (A)</span>
+                    <span class="text-lg font-bold text-white">$160.047.825</span>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded border border-slate-700">
+                    <span class="block text-slate-400">Total Descuentos Afectos (B)</span>
+                    <span class="text-lg font-bold text-red-400">$36.297.740</span>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded border border-slate-700">
+                    <span class="block text-slate-400">Sueldo Líquido resultante (A - B)</span>
+                    <span class="text-lg font-bold text-emerald-400">$123.750.085</span>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded border border-slate-700">
+                    <span class="block text-slate-400">Diferencia con Nómina Pago</span>
+                    <span class="text-lg font-bold text-emerald-400">$0 (Cuadrado Perfecto)</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-4 mt-8 text-center text-xs text-slate-500">
+        <p>Liceo Particular Avenida Recoleta — Fundación María Romo | Informe emitido por Departamento de Auditoría y Contabilidad</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        const haberesData = [
+            { cod: '998', haber: 'SUELDO BASE (SEP)', tipo: 'Imponible', sub: 'SEP', monto: 28464321 },
+            { cod: '999', haber: 'SUELDO BASE', tipo: 'Imponible', sub: 'GENERAL', monto: 20274696 },
+            { cod: '1000', haber: 'RBMN (MEDIA)', tipo: 'Imponible', sub: 'GENERAL', monto: 25808017 },
+            { cod: '1001', haber: 'RBMN (BASICA)', tipo: 'Imponible', sub: 'GENERAL', monto: 26853254 },
+            { cod: '1002', haber: 'RBMN SEP (BASICA)', tipo: 'Imponible', sub: 'SEP', monto: 1759296 },
+            { cod: '1009', haber: 'BONO LEY 19933 (1)', tipo: 'Imponible', sub: 'GENERAL', monto: 8399593 },
+            { cod: '1010', haber: 'BONO LEY 19410 (1)', tipo: 'Imponible', sub: 'GENERAL', monto: 3284490 },
+            { cod: '1015', haber: 'BRP TITULO', tipo: 'Imponible', sub: 'GENERAL', monto: 2879828 },
+            { cod: '1016', haber: 'BRP MENCION', tipo: 'Imponible', sub: 'GENERAL', monto: 1783853 },
+            { cod: '1018', haber: 'ASIG. DESEMP. DIFICIL DOCENTE', tipo: 'Imponible', sub: 'GENERAL', monto: 1212253 },
+            { cod: '1019', haber: 'ASIG. DESEMP. DIFICIL ASISTENTES', tipo: 'Imponible', sub: 'GENERAL', monto: 296825 },
+            { cod: '1059', haber: 'RBMN SEP (MEDIA )', tipo: 'Imponible', sub: 'SEP', monto: 841360 },
+            { cod: '1064', haber: 'ATDP LEY.20903', tipo: 'Imponible', sub: 'GENERAL', monto: 850625 },
+            { cod: '1065', haber: 'ACP LEY.20903', tipo: 'Imponible', sub: 'GENERAL', monto: 887139 },
+            { cod: '1121', haber: 'MAYOR VALOR HORA CONVENIDA', tipo: 'Imponible', sub: 'GENERAL', monto: 14689430 },
+            { cod: '1138', haber: 'ATDP TRANSFERENCIA DIRECTA', tipo: 'Imponible', sub: 'GENERAL', monto: 2029554 },
+            { cod: '1214', haber: 'BRP TITULO aporte Ley 19278', tipo: 'Imponible', sub: 'GENERAL', monto: 2816409 },
+            { cod: '1214', haber: 'BRP TITULO aporte Ley 19278', tipo: 'Imponible', sub: 'SEP', monto: 152400 },
+            { cod: '1233', haber: 'BRP TITULO TD', tipo: 'Imponible', sub: 'GENERAL', monto: 1502315 },
+            { cod: '1234', haber: 'BRP MENCION TD', tipo: 'Imponible', sub: 'GENERAL', monto: 468364 },
+            { cod: '1235', haber: 'BRP SUBVENCION TITULO', tipo: 'Imponible', sub: 'GENERAL', monto: 254000 },
+            { cod: '3002', haber: 'BONO COLEGIO', tipo: 'Imponible', sub: 'GENERAL', monto: 2692350 },
+            { cod: '3002', haber: 'BONO COLEGIO', tipo: 'Imponible', sub: 'SEP', monto: 737493 },
+            { cod: '3005', haber: 'BONO RESPONSABILIDAD', tipo: 'Imponible', sub: 'GENERAL', monto: 3064225 },
+            { cod: '3005', haber: 'BONO RESPONSABILIDAD', tipo: 'Imponible', sub: 'SEP', monto: 1749058 },
+            { cod: '3012', haber: 'LEY 19464 (1)', tipo: 'Imponible', sub: 'GENERAL', monto: 1031934 },
+            { cod: '3036', haber: 'BONO INCENTIVO', tipo: 'Imponible', sub: 'SEP', monto: 60000 },
+            { cod: '3048', haber: 'DESC.HORAS, PERMISOS Y/O ATRASOS', tipo: 'Imponible', sub: 'GENERAL', monto: -254220 },
+            { cod: '3048', haber: 'DESC.HORAS, PERMISOS Y/O ATRASOS', tipo: 'Imponible', sub: 'SEP', monto: -102440 },
+            { cod: '3082', haber: 'BONO ADICIONAL', tipo: 'Imponible', sub: 'GENERAL', monto: 50000 },
+            { cod: '3132', haber: 'BONO TALLER ACLE', tipo: 'Imponible', sub: 'SEP', monto: 145000 },
+            { cod: '9007', haber: 'DESC. DE TIEMPO', tipo: 'Imponible', sub: 'GENERAL', monto: -481482 },
+            { cod: '9007', haber: 'DESC. DE TIEMPO', tipo: 'Imponible', sub: 'SEP', monto: -156077 },
+            { cod: '1070', haber: 'COLACION', tipo: 'No Imponible', sub: 'GENERAL', monto: 1210766 },
+            { cod: '1070', haber: 'COLACION', tipo: 'No Imponible', sub: 'SEP', monto: 538532 },
+            { cod: '1071', haber: 'MOVILIZACION', tipo: 'No Imponible', sub: 'GENERAL', monto: 2032359 },
+            { cod: '1071', haber: 'MOVILIZACION', tipo: 'No Imponible', sub: 'SEP', monto: 942973 },
+            { cod: '1072', haber: 'ASIGNACION FAMILIAR', tipo: 'No Imponible', sub: 'GENERAL', monto: 536327 },
+            { cod: '1073', haber: 'FAMILIAR RETROACTIVO', tipo: 'No Imponible', sub: 'GENERAL', monto: 113005 },
+            { cod: '1074', haber: 'SALA CUNA', tipo: 'No Imponible', sub: 'GENERAL', monto: 400000 },
+            { cod: '1081', haber: 'OTROS NO IMPONIBLES', tipo: 'No Imponible', sub: 'GENERAL', monto: 30000 },
+            { cod: '1081', haber: 'OTROS NO IMPONIBLES', tipo: 'No Imponible', sub: 'SEP', monto: 200000 }
+        ];
+
+        function renderHaberes(filter = 'TODAS') {
+            const tbody = document.getElementById('haberes-tbody');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            const filtered = haberesData.filter(item => filter === 'TODAS' || item.sub === filter);
+
+            filtered.forEach(item => {
+                total += item.monto;
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition-colors';
+                
+                const subBadge = item.sub === 'SEP' 
+                    ? '<span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">SEP</span>'
+                    : '<span class="bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[10px]">GENERAL</span>';
+
+                const tipoBadge = item.tipo === 'Imponible'
+                    ? '<span class="text-slate-600 font-medium">Imponible</span>'
+                    : '<span class="text-amber-700 font-medium">No Imponible</span>';
+
+                tr.innerHTML = `
+                    <td class="p-2.5 font-mono text-slate-500">${item.cod}</td>
+                    <td class="p-2.5 font-bold text-slate-800">${item.haber}</td>
+                    <td class="p-2.5">${tipoBadge}</td>
+                    <td class="p-2.5">${subBadge}</td>
+                    <td class="p-2.5 text-right font-bold text-slate-900">$${item.monto.toLocaleString('es-CL')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('haberes-total-foot').innerText = '$' + total.toLocaleString('es-CL');
+        }
+
+        function filterSubvencion(sub) {
+            document.querySelectorAll('.sub-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-900', 'shadow-sm', 'font-bold');
+                btn.classList.add('text-slate-600', 'font-semibold');
+            });
+
+            const activeBtn = document.getElementById('btn-' + sub);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'text-indigo-900', 'shadow-sm', 'font-bold');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            renderHaberes(sub);
+        }
+
+        // Initial render
+        renderHaberes('TODAS');
+    </script>
+</body>
+</html>
